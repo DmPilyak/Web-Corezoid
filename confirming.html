@@ -20,14 +20,16 @@
 										<div class="section text-center">
 											<h4 id = "textUID" class="mb-4 pb-3">UID (check your inbox in )</h4>
 											<div class="form-group mt-2">
-												<input type="text" name="uid" class="form-style" placeholder="Your UID from email" id="uid" autocomplete="off">
-												<i class="input-icon uil uil-lock-alt"></i>
-												<a href="#">
-													<button onclick = "sendUID()" class="btn mt-4">Submit</button>
-												</a>
-												<a href="#">
-													<button onclick = "testSunc()" class="btn mt-4">Submit</button>
-												</a>
+												<form action="/confirming" method="POST">
+													<div>
+														<input type="hidden" name="email" class="form-style" id="email" autocomplete="off">
+													</div>
+													<div>
+														<input type="text" name="uid" class="form-style" placeholder="Your UID from email" id="uid" autocomplete="off">
+													</div>
+													<i class="input-icon uil uil-lock-alt"></i>
+													<input class="mt-3" type="submit" value="Confirm"/>
+												</form>
 											</div>
 				      					</div>
 			      					</div>
@@ -41,54 +43,10 @@
 	</div>
 
 	<script>
-		let userEmail = localStorage.getItem("userEmail");
-		document.getElementById("textUID").innerHTML = 'UID (check your inbox in ' + userEmail + ' )';
-		function sendUID(){
-			let inputUID = document.querySelector('#uid');
-			let uid = { 
-				"uid": inputUID.value
-			}
-		fetch('https://www.corezoid.com/api/1/json/public/1026813/901ec3da5cd4608a98f2dfd82999e0877246c56b', {
-  			method: "POST",
-  			mode: 'no-cors',
-  			body: JSON.stringify(uid),
-  			headers: {"Content-type": "application/json; charset=UTF-8"}
-		}).then(response => response.json()) 
-			.then(json => console.log(json))
-			.catch(err => console.log(err));
-		window.location.href = 'account.html';
-		localStorage.setItem("inputUserUID", inputUID.value);
-	}
-
-	function testSunc(){
-			let body = {
-  				'timeout': '30',
-  				"ops": [
-    					{
-      						"conv_id": "1027185",
-     						"type": "create",
-      						"obj": "task",
-      						"data": {
-          					"version": "Corezoid API DP 2 (test)",
-          					"param": "somedata"
-					}
-					}
-				]
-				}
-			fetch('https://www.corezoid.com/api/1/json/public/1027185/8ad3eefb6d8d94524f4ea570084adc06083e63f1', {
-  			method: "POST",
-  			mode: 'no-cors',
-  			body: JSON.stringify(body),
-  			headers: {"Content-type": "application/json; charset=UTF-8"}
-		}).then(response => {
-    // обработка ответа
-    console.log( response );
-  })
-  .catch(error => {
-    // обработка ошибки
-    console.log( error );
-  });
-		}
+		var url = new URL(window.location.href);
+		var email = url.searchParams.get("email");
+		document.getElementById("textUID").innerHTML = 'UID (check your inbox in ' + email + ' )';
+		document.getElementById("email").value = email;
 	</script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
