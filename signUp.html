@@ -23,18 +23,20 @@
 									<div class="center-wrap">
 										<div class="section text-center">
 											<h4 class="mb-4 pb-3">Log In</h4>
-											<div class="form-group">
-												<input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off">
-												<i class="input-icon uil uil-at"></i>
-											</div>	
-											<div class="form-group mt-2">
-												<input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
-												<i class="input-icon uil uil-lock-alt"></i>
-											</div>
-											<a href="#" class="btn mt-4">submit</a>
-				      					</div>
-			      					</div>
-			      				</div>
+											<form action="/login" method="POST">	
+												<div class="form-group">
+													<input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off">
+													<i class="input-icon uil uil-at"></i>
+												</div>	
+												<div class="form-group mt-2">
+													<input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
+													<i class="input-icon uil uil-lock-alt"></i>
+												</div>
+												<input type="submit" value="Send" id="signup"/>			
+											</form>
+										</div>
+									</div>
+			      	</div>
 								<div class="card-back">
 									<div class="center-wrap">
 										<h4 class="mb-4 pb-3">Sign Up</h4>
@@ -69,13 +71,5 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script>
-	document.getElementById('signup').onclick = function() {
-		let nameCookie = document.getElementById("first_name").value;
-		let valuelCookie = document.getElementById("email").value;
-		let cookie = `${nameCookie} = ${valuelCookie}`;
-		document.cookie = cookie;
-	}
-</script> 
 </body>
 </html>

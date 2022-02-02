@@ -22,7 +22,7 @@
 											<div class="form-group mt-2">
 												<form action="/confirming" method="POST">
 													<div>
-														<input type="hidden" name="email" class="form-style" id="email" autocomplete="off">
+														<input type="hidden" value="" name="email" class="form-style" id="email" autocomplete="off">
 													</div>
 													<div>
 														<input type="text" name="uid" class="form-style" placeholder="Your UID from email" id="uid" autocomplete="off">
@@ -41,10 +41,9 @@
 	      	</div>
 	    </div>
 	</div>
-
+	<script src="getCookie.js"></script>
 	<script>
-		var url = new URL(window.location.href);
-		var email = url.searchParams.get("email");
+		let email = getCookie("userEmail");
 		document.getElementById("textUID").innerHTML = 'UID (check your inbox in ' + email + ' )';
 		document.getElementById("email").value = email;
 	</script>

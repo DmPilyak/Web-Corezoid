@@ -2,7 +2,7 @@
 <html>
  <head>
   <meta charset="utf-8" />
-  <title>Confirm registration</title>
+  <title>Account</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="./bootstrap/min.css">  
 </head>
@@ -10,7 +10,6 @@
 	<div class="section">
 		<div class="container">
 			<div class="row full-height justify-content-center">
-				<div class="col-8 text-center align-self-center py-5">
 					<div class=" pb-5 pt-5 pt-sm-2 text-center">
 						<h6 class="mb-0 pb-3"></h6>
 			          	<input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
@@ -19,22 +18,30 @@
 										<div class="section text-center">
 											<h4 id = "name" class="mb-4 pb-3"></h4>
 											<h4 id = "surname" class="mb-4 pb-3"></h4>
+											<h4 id = "email" class="mb-4 pb-3"></h4>
+											<h4 id = "password" class="mb-4 pb-3"></h4>
 				      					</div>
 			      					</div>
+											<form action="/signup" method="GET">
+												<input type="submit" value="Logout" id="signup"/>	
+											</form>
 			      				</div>
 			      			</div>
 			      		</div>
 			      	</div>
 		      	</div>
 	      	</div>
-	    </div>
 	</div>
+	<script src="getCookie.js"></script>
 	<script>
-		var url = new URL(window.location.href);
-		var name = url.searchParams.get("name");
-		var surname = url.searchParams.get("surname");
-		document.getElementById("name").innerHTML = 'Name: ' + name;
-		document.getElementById("surname").innerHTML = 'Surname: ' + surname;
+		let email = getCookie("userEmail");
+		let name = getCookie("userName");
+		let surname = getCookie("userSurname");
+		let password = getCookie("userPassword");
+		document.getElementById("name").innerHTML = "Name: " + name;
+		document.getElementById("surname").innerHTML = "Surname: " + surname;
+		document.getElementById("email").innerHTML = "Email: " + email;
+		document.getElementById("password").innerHTML = "Password: " + password;
 	</script>
 </body>
 </html>
